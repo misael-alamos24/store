@@ -1,0 +1,208 @@
+.item-card {
+  background-color: #33333380;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  color: #fff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.item-title {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  color: #e6e6e6;
+}
+
+p {
+  margin: 5px 0;
+  font-size: 0.9em;
+}
+
+.item {
+  background-color: #2f3e46f0; /* Fondo oscuro, evocando un ambiente rústico y natural */
+  color: #cad2c5; /* Color claro para texto, contrastando bien con el fondo */
+  border: 1px solid #52796f; /* Un borde sutil que añade estructura */
+  border-radius: 8px;
+  padding: 15px;
+  margin: 10px 0;
+  text-align: center;
+  max-width: 300px;
+  font-family: 'Georgia', serif; /* Fuente más clásica para un look artesanal */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave para dar profundidad */
+  transition: transform 0.2s ease-in-out; /* Transición para efecto de hover */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.item:hover {
+  transform: scale(1.05); /* Efecto al pasar el mouse sobre el item */
+}
+
+.item-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.item-details h3 {
+  font-size: 1.5em;
+  color: #84a98c; /* Color verde sutil que evoca naturaleza */
+  margin-bottom: 5px;
+}
+
+.item-details p {
+  font-size: 1em;
+  color: #eae7dc; /* Texto en un tono claro */
+}
+
+.border {
+  border: 1px solid greenyellow;
+}
+
+.padding20{
+  padding: 20px;
+}
+
+.padding8{
+  padding: 8px;
+}
+
+.radius{
+  border-radius: 8px;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+.underline:hover{
+  text-decoration: underline;
+}
+
+.flex{
+  display: flex;
+}
+
+.between{
+  justify-content: space-between;
+}
+
+.w0 {
+  width: 0%;
+}
+
+.w10 {
+  width: 10%;
+}
+
+.w20 {
+  width: 20%;
+}
+.w25 {
+  width: 25%;
+}
+
+.w30 {
+  width: 30%;
+}
+
+.w40 {
+  width: 40%;
+}
+
+.w50 {
+  width: 50%;
+}
+
+.w60 {
+  width: 60%;
+}
+
+.w70 {
+  width: 70%;
+}
+
+.w80 {
+  width: 80%;
+}
+
+.w90 {
+  width: 90%;
+}
+.w92 {
+  width: 92.5%;
+}
+
+.w100 {
+  width: 100%;
+}
+
+.text-start{
+  text-align: start;
+}
+.text-center{
+  text-align: center;
+}
+
+.fixed{
+  position: fixed;
+}
+
+.margin-r0{
+  margin-right: 0px;
+}
+.margin-x20{
+  margin: auto 20px;
+}
+.a-color{
+  color: orange;
+}
+.a-color:visited{
+  color: orangered;
+}
+.a-color:hover{
+  color: yellow;
+}
+.button-show{
+  height: 80vh;
+  width: 40px;
+  background-color:rgba(0,0,0,0.5); 
+  color: wheat;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 0px auto;
+  align-items: center;
+  /* justify-content: start; */
+}
+.button-show:hover{
+  background-color: rgba(0, 0, 0, 0.75);
+}
+.length{
+  margin: 0px auto;
+  background-color: red;
+  color: white;
+  border: 1px solid white;
+  height: 25px;
+  width: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 8px;
+}
+.justify-center{
+  justify-content: center;
+}
+.fixed{
+  position: fixed;
+}
+.right0{
+  right: 0px;
+}
+
+.left0{
+  left: 0px;
+}
