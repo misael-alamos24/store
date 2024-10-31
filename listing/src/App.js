@@ -149,8 +149,16 @@ export const Item = ({
 	list, venta, cantidad, fecha, vence, lote, estado, valores, total, imageUrl, i, 
 }) => {
 	
-  let [quan, setQuan] = useState(1); 
+  let [quan, setQuan] = useState( 1 ); 
   let [value, setValue] = useState(null); 
+
+  /**
+   posibilidades	resultado
+   no hay string	1
+   '0'				0
+   '1'				1
+   '2'				1
+   */
 
 	useEffect(()=>{
 		// console.log({value, quan})
@@ -164,6 +172,7 @@ export const Item = ({
 	for (let a = 1; a <= cantidad; a++){
 		array[a-1] = a
 	}
+	!array.length && array.push(1)
 
 	return (
 		<div className="item">
@@ -190,12 +199,12 @@ export const Item = ({
 			{/* {valores && <p><strong>Valores:</strong> ${valores}</p>} */}
 			{/* {total && <p><strong>Total:</strong> ${total}</p>} */}
 					<div className='flex'>
-						<div className='border padding8 radius pointer underline w80 backlime' 
+						<div className='border padding8 radius-l dotted-r border-r0 pointer underline w80 backlime' 
 						onClick={()=>setValue(!!!value)}> Agregar al carrito
 							<input value={!!value} checked={!!value} type='checkbox' className='pointer' onChange={()=>setValue(!!!value)}/>
 						</div>
-						<select className='w20' onChange={(e)=>setQuan(Number(e.target.value))}>
-							{array.map(n=><option key={n}>{n}</option>)}
+						<select className='w20 radius-r backlime border border-l0' onChange={(e)=>setQuan(Number(e.target.value))}>
+							{array.map(n=><option className='backblack' key={n}>{n}</option>)}
 						</select>
 					</div>
 		</div>
