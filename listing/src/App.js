@@ -5,7 +5,7 @@ import axios from 'axios';
 import './ItemsList.css'; // Archivo de estilos para la lista
 import './Item.css'; // Archivo de estilos para el componente
 import { hex } from './hex';
-import { lista } from '../lista';
+import { lista } from './lista';
 
 const productos = [
   { nombre: 'Fideos', marca: 'Lucchetti', categoria: 'Pastas', tipo: 'Codito', descripcion: '', tamaño: 'Normal', peso: '500g', costo: '1300', venta: '1950', cantidad: '1', fecha: '17/08/2024', vence: '11/07/2025', lote: '', estado: 'En regla', valores: '1950', total: '224700' },
