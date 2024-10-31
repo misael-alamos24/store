@@ -67,7 +67,7 @@ export default function App () {
 				<div style={{ color: '#fff', backgroundColor: 'rgba(0,0,0,0.5)', borderRadius: '16px', right: ''}} className='text-start padding20 w100'>
 					<div id='list' className='w90'> 
 						<span className=''>Lista</span>
-						{cart.map((c,i) => <div className='w100 cart-container' key={i}>
+						{cart.map((c,i) => <div className='w90 cart-container' key={i}>
 							{i===0 && 
 								<div className='flex between w100'>
 									<b className='w60'>Artículo</b>
