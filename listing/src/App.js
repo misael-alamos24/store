@@ -66,7 +66,7 @@ export default function App () {
 			<div className='flex justify-center w100' style={{ position: 'fixed', right: '0px' }}>
 				<div style={{ color: '#fff', backgroundColor: 'rgba(0,0,0,0.5)', borderRadius: '16px', right: ''}} className='text-start padding20 w100'>
 					<div id='list' className='w90'> 
-						<span className=''>Lista</span>
+						{/* <span className=''>Lista</span> */}
 						{cart.map((c,i) => <div className='w90 cart-container' key={i}>
 							{i===0 && 
 								<div className='flex between w100'>
@@ -189,16 +189,16 @@ export const Item = ({
 			{/* {estado && <p><strong>Estado:</strong> {estado}</p>} */}
 			{/* {valores && <p><strong>Valores:</strong> ${valores}</p>} */}
 			{/* {total && <p><strong>Total:</strong> ${total}</p>} */}
-				<div className='flex'>
-					<div className='border padding8 radius pointer underline w80 backlime' 
-					onClick={()=>setValue(!!!value)}> Agregar al carrito
-						<input value={!!value} checked={!!value} type='checkbox' className='pointer' onChange={()=>setValue(!!!value)}/>
+					<div className='flex'>
+						<div className='border padding8 radius pointer underline w80 backlime' 
+						onClick={()=>setValue(!!!value)}> Agregar al carrito
+							<input value={!!value} checked={!!value} type='checkbox' className='pointer' onChange={()=>setValue(!!!value)}/>
+						</div>
+						<select className='w20' onChange={(e)=>setQuan(Number(e.target.value))}>
+							{array.map(n=><option key={n}>{n}</option>)}
+						</select>
 					</div>
-					<select className='w20' onChange={(e)=>setQuan(Number(e.target.value))}>
-						{array.map(n=><option key={n}>{n}</option>)}
-					</select>
-				</div>
-			</div>
+		</div>
 		</div>
 	);
 };

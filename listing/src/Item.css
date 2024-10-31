@@ -169,6 +169,8 @@ p {
 .button-show{
   height: 80vh;
   width: 40px;
+  border-start-start-radius: 8px;
+  border-end-start-radius: 8px;
   background-color:rgba(0,0,0,0.5); 
   color: wheat;
   display: flex;
