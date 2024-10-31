@@ -4,8 +4,10 @@ import './App.css';
 import axios from 'axios';
 import './ItemsList.css'; // Archivo de estilos para la lista
 import './Item.css'; // Archivo de estilos para el componente
+import './cart.css';
 import { hex } from './hex';
 import { lista } from './lista';
+
 
 const productos = [
   { nombre: 'Fideos', marca: 'Lucchetti', categoria: 'Pastas', tipo: 'Codito', descripcion: '', tamaño: 'Normal', peso: '500g', costo: '1300', venta: '1950', cantidad: '1', fecha: '17/08/2024', vence: '11/07/2025', lote: '', estado: 'En regla', valores: '1950', total: '224700' },
@@ -39,9 +41,15 @@ export default function App () {
 		m=> hex.hasOwnProperty(m) ? hex[m] : m
 	).join('');
 	const button = () => <button className='pointer button-show fixed right0' title='Ver carrito' onClick={()=>setShow(!show)}>
-		<div>🛒</div>
-		<b>{show?'>':'<'}</b>
+		<div style={{fontSize: '24px'}}>🛒</div>
 		<div className='length'>{cart.length}</div>
+		<div style={{fontSize: '24px'}}><b>{show?'>':'<'}</b></div>
+		<div>
+			<div>Ca</div>
+			<div>rri</div>
+			<div>to</div>
+		</div>
+		<div style={{fontSize: '24px'}}>🛒</div>
 	</button>
 
   return (
@@ -58,8 +66,8 @@ export default function App () {
 			<div className='flex justify-center w100' style={{ position: 'fixed', right: '0px' }}>
 				<div style={{ color: '#fff', backgroundColor: 'rgba(0,0,0,0.5)', borderRadius: '16px', right: ''}} className='text-start padding20 w100'>
 					<div id='list' className='w90'> 
-						Lista 
-						{cart.map((c,i) => <div className='w100' key={i}>
+						<span className=''>Lista</span>
+						{cart.map((c,i) => <div className='w100 cart-container' key={i}>
 							{i===0 && 
 								<div className='flex between w100'>
 									<b className='w60'>Artículo</b>
@@ -181,16 +189,16 @@ export const Item = ({
 			{/* {estado && <p><strong>Estado:</strong> {estado}</p>} */}
 			{/* {valores && <p><strong>Valores:</strong> ${valores}</p>} */}
 			{/* {total && <p><strong>Total:</strong> ${total}</p>} */}
-					<div className='flex'>
-						<div className='border padding8 radius pointer underline w80' 
-						onClick={()=>setValue(!!!value)}> Agregar ítem
-							<input value={!!value} checked={!!value} type='checkbox' className='pointer' onChange={()=>setValue(!!!value)}/>
-						</div>
-						<select className='w20' onChange={(e)=>setQuan(Number(e.target.value))}>
-							{array.map(n=><option key={n}>{n}</option>)}
-						</select>
+				<div className='flex'>
+					<div className='border padding8 radius pointer underline w80 backlime' 
+					onClick={()=>setValue(!!!value)}> Agregar al carrito
+						<input value={!!value} checked={!!value} type='checkbox' className='pointer' onChange={()=>setValue(!!!value)}/>
 					</div>
-		</div>
+					<select className='w20' onChange={(e)=>setQuan(Number(e.target.value))}>
+						{array.map(n=><option key={n}>{n}</option>)}
+					</select>
+				</div>
+			</div>
 		</div>
 	);
 };

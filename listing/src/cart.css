@@ -1,0 +1,71 @@
+/* Contenedor principal del carrito */
+.cart-container {
+    max-width: 400px;
+    padding: 14px;
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro con transparencia */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    color: #f1f1f1;
+    font-family: 'Patrick Hand', sans-serif; /* Fuente estilo manuscrito */
+  }
+  
+  /* Título del carrito */
+  .cart-title {
+    font-size: 1.5em;
+    text-align: center;
+    color: #e0e0e0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 10px;
+  }
+  
+  /* Lista de ítems */
+  .cart-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Cada ítem de la lista */
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+    font-size: 1.1em;
+    color: #d3d3d3;
+  }
+  
+  .cart-item:last-child {
+    border-bottom: none;
+  }
+  
+  /* Botón de eliminar para cada ítem */
+  .cart-item button {
+    background: none;
+    border: none;
+    color: #ff7373;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+  }
+  
+  .cart-item button:hover {
+    color: #ff4a4a;
+  }
+  
+  /* Resumen de precios y total */
+  .cart-summary {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2em;
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    color: #e0e0e0;
+  }
+  
+  /* Fuente manuscrita para todo */
+  @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+  
