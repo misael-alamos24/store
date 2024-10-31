@@ -63,7 +63,7 @@ export default function App () {
 			</div>
 			{!show && button()}
 			{show &&
-			<div className='flex justify-center w100' style={{ position: 'fixed', right: '40px' }}>
+			<div className='flex justify-center w100' style={{ position: 'fixed', right: '40px', left: '0px' }}>
 				<div style={{ color: '#fff', backgroundColor: 'rgba(0,0,0,0.5)', borderRadius: '', right: ''}} className='text-start padding20 w100'>
 					<div id='list' className='w90'> 
 						{/* <span className=''>Lista</span> */}
