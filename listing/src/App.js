@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import axios from 'axios';
+// import axios from 'axios';
 import './ItemsList.css'; // Archivo de estilos para la lista
 import './Item.css'; // Archivo de estilos para el componente
 import './cart.css';
@@ -17,15 +17,25 @@ const productos = [
 export default function App () {
 
 	let [list, setList] = useState([]);
+	let [cat, setCat] = useState('');
+	let [filt, setFilt] = useState([]); 
 	let [cart, setCart] = useState([]);
 	let [show, setShow] = useState(false);
+
+	console.log({filt, cat, list})
 	
 	useEffect(()=>{
 		// axios.get(
 		// 'http://localhost:3001/list'
 		// ).then(r=> setList(r.data))
 		!list.length && setList(lista)
+		//eslint-disable-next-line
 	},[]);
+
+	useEffect(()=>{
+		cat ? setFilt(list.filter(l=>l.Categoría === cat)) : setFilt(list)
+		//eslint-disable-next-line
+	},[cat]);
 
 	let msg = '';
 
@@ -54,12 +64,24 @@ export default function App () {
 
   return (
     <div className='App'>
-		<h1 style={{ color: '#fff', backgroundColor: 'rgba(0,0,0,0.5)', borderRadius: '16px', textAlign: 'center', width: '50%', margin: 'auto' }}>
-			Store
-		</h1>
+		<div className='flex between'>
+			<div className='w30'>
+				<select className='w100' onChange={(e)=>setCat(e.target.value)}>
+					{['', ...new Set(list.map(item => item.Categoría))].map((l,i)=><option key={i}>
+						{l}
+					</option>)}
+				</select>
+			</div>
+			<h1 style={{ color: '#fff', backgroundColor: 'rgba(0,0,0,0.5)', borderRadius: '16px', textAlign: 'center', width: '40%', margin: 'auto' }}>
+				Store
+			</h1>
+			<div className='w30'>
+
+			</div>
+		</div>
 		<div className='flex between'>
 			<div className={`w92 margin-x20 left0`}>
-				<ItemList productos={list.length ? list : productos} cart={cart} setCart={setCart} list={list}/>
+				<ItemList productos={list.length ? list : productos} cart={cart} setCart={setCart} list={list} cat={cat}/>
 			</div>
 			{!show && button()}
 			{show &&
@@ -110,16 +132,17 @@ export default function App () {
 };
 
 
-export const ItemList = ({productos, cart, setCart, quan, setQuan, list, cont, setCont}) => { 
+export const ItemList = ({productos, cart, setCart, quan, setQuan, list, cont, setCont, cat}) => { 
   return (
     <div className="item-container">
-		{productos.map((producto, index) => (
-			<Item
+		{productos.map((producto, index) => {
+		// console.log(producto.Categoría, {cat}, producto.Categoría===cat); 
+		return <Item
 				i={index}
 				key={index}
 				nombre={producto.Nombre}     
 				marca={producto.Marca}
-				categoria={producto.Categoria}
+				categoria={producto.Categoría}
 				tipo={producto.Tipo}
 				imageUrl={producto.Imagen}
 				descripcion={producto.Descripcion}
@@ -137,8 +160,9 @@ export const ItemList = ({productos, cart, setCart, quan, setQuan, list, cont, s
 				cart={cart} 
 				setCart={setCart}
 				list={list}
+				allow={!cat || (producto.Categoría === cat)}
 			/>
-		))}
+		})}
     </div>
   );
 };
@@ -146,11 +170,13 @@ export const ItemList = ({productos, cart, setCart, quan, setQuan, list, cont, s
 
 export const Item = ({ 
 	nombre, marca, categoria, tipo, descripcion, tamaño, peso, costo, cart, setCart, 
-	list, venta, cantidad, fecha, vence, lote, estado, valores, total, imageUrl, i, 
+	list, venta, cantidad, fecha, vence, lote, estado, valores, total, imageUrl, i, allow
 }) => {
 	
   let [quan, setQuan] = useState( 1 ); 
   let [value, setValue] = useState(null); 
+
+  console.log({allow})
 
   /**
    posibilidades	resultado
@@ -174,7 +200,7 @@ export const Item = ({
 	}
 	!array.length && array.push(1)
 
-	return (
+	return allow ? (
 		<div className="item">
 		{imageUrl && 
 			<img className="item-image" src={imageUrl} loading='lazy' alt="Producto" />
@@ -198,16 +224,16 @@ export const Item = ({
 			{/* {estado && <p><strong>Estado:</strong> {estado}</p>} */}
 			{/* {valores && <p><strong>Valores:</strong> ${valores}</p>} */}
 			{/* {total && <p><strong>Total:</strong> ${total}</p>} */}
-					<div className='flex'>
-						<div className='border padding8 radius-l dotted-r border-r0 pointer underline w80 backlime' 
-						onClick={()=>setValue(!!!value)}> Agregar al carrito
-							<input value={!!value} checked={!!value} type='checkbox' className='pointer' onChange={()=>setValue(!!!value)}/>
-						</div>
-						<select className='w20 radius-r backlime border border-l0' onChange={(e)=>setQuan(Number(e.target.value))}>
-							{array.map(n=><option className='backblack' key={n}>{n}</option>)}
-						</select>
+				<div className='flex'>
+					<div className='border padding8 radius-l dotted-r border-r0 pointer underline w80 backlime' 
+					onClick={()=>setValue(!!!value)}> Agregar al carrito
+						<input value={!!value} checked={!!value} type='checkbox' className='pointer' onChange={()=>setValue(!!!value)}/>
 					</div>
+					<select className='w20 radius-r backlime border border-l0' onChange={(e)=>setQuan(Number(e.target.value))}>
+						{array.map(n=><option className='backblack' key={n}>{n}</option>)}
+					</select>
+				</div>
+			</div>
 		</div>
-		</div>
-	);
+	) : <div></div>;
 };
