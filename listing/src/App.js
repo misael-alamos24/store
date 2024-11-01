@@ -50,7 +50,7 @@ export default function App () {
 	msg = msg.split('').map(
 		m=> hex.hasOwnProperty(m) ? hex[m] : m
 	).join('');
-	const button = () => <button className='pointer button-show fixed right0' title='Ver carrito' onClick={()=>setShow(!show)}>
+	const button = () => <button className='pointer button-show fixed right0 top10pc' title='Ver carrito' onClick={()=>setShow(!show)}>
 		<div style={{fontSize: '24px'}}>🛒</div>
 		<div className='length'>{cart.length}</div>
 		<div style={{fontSize: '24px'}}><b>{show?'>':'<'}</b></div>
@@ -64,36 +64,37 @@ export default function App () {
 
   return (
     <div className='App'>
-		<div className='flex between'>
-			<div className='w30'>
-				<select className='w100' onChange={(e)=>setCat(e.target.value)}>
-					{['', ...new Set(list.map(item => item.Categoría))].map((l,i)=><option key={i}>
+		<div className='flex between h10pc w100' style={{backgroundColor: 'rgba(0,0,0,0.5)', position: 'fixed', top: '0px', zIndex: 1}}>
+			<div className='w50 paddingx4 paddingy8'>
+				<div>Filtrar</div>
+				<select className='w100 backblack paddingx4 paddingy8' style={{margin: 'auto', borderRadius: '16px', maxWidth: '100%'}} onChange={(e)=>setCat(e.target.value)}>
+					{['', ...new Set(list.map(item => item.Categoría))].map((l,i)=><option className='backblack' key={i}>
 						{l}
 					</option>)}
 				</select>
 			</div>
-			<h1 style={{ color: '#fff', backgroundColor: 'rgba(0,0,0,0.5)', borderRadius: '16px', textAlign: 'center', width: '40%', margin: 'auto' }}>
+			<h1 style={{ color: '#fff', borderRadius: '16px', textAlign: 'center', width: '50%', margin: 'auto', fontFamily: 'serif' }}>
 				Store
 			</h1>
-			<div className='w30'>
+			<div className=''>
 
 			</div>
 		</div>
 		<div className='flex between'>
-			<div className={`w92 margin-x20 left0`}>
+			<div className={`w92 margin-x20 left0 margintop10vh`}>
 				<ItemList productos={list.length ? list : productos} cart={cart} setCart={setCart} list={list} cat={cat}/>
 			</div>
 			{!show && button()}
 			{show &&
-			<div className='flex justify-center w100' style={{ position: 'fixed', right: '40px', left: '0px' }}>
-				<div style={{ color: '#fff', backgroundColor: 'rgba(0,0,0,0.5)', borderRadius: '', right: ''}} className='text-start padding20 w100'>
+			<div className='flex justify-center w100' style={{ position: 'fixed', top: '10vh', right: '40px', left: '0px' }}>
+				<div style={{ color: '#fff', backgroundColor: 'rgba(0,0,0,0.5)', borderRadius: '', right: ''}} className='text-start padding4 w100'>
 					<div id='list' className='w90'> 
 						{/* <span className=''>Lista</span> */}
 						{cart.map((c,i) => <div className='w90 cart-container' key={i}>
 							{i===0 && 
 								<div className='flex between w100'>
 									<b className='w60'>Artículo</b>
-									<b className='w20 text-center'>Unid.</b>
+									<b className='w20'>Unid.</b>
 									<b className='w20 text-center'>Precio</b>
 								</div>}
 								<div className='flex between w100'>
@@ -105,17 +106,17 @@ export default function App () {
 									<div className='w20 text-center'>
 										<span>{Number(c.quan)}</span>
 									</div>
-									<div className='flex between w20'>
-										<span className=''>$</span>
-										<span className=''>{Number(c.Venta) * Number(c.quan) }</span>
+									<div className='flex between w20 end'>
+										{/* <span className=' border'>$</span> */}
+										<span className=''>{'$'+Number(c.Venta) * Number(c.quan) }</span>
 									</div>
 								</div>
 							</div>)}
-						<div className='flex between'>
+						<div className='flex between w90 cart-container'>
 							<b>Subtotal</b>
-							<div className='flex between w20'>
-								<span>$</span>
-								<span>{cart.reduce((a, v) => Number(v.Venta) * Number(v.quan) +Number(a), 0)}</span>
+							<div className='flex between w20 end'>
+								{/* <span>$</span> */}
+								<span className=''>{'$'+cart.reduce((a, v) => Number(v.Venta) * Number(v.quan) +Number(a), 0)}</span>
 							</div>
 						</div>
 						{!!(cart.length > 0)&& <a className='a-color' target='_blank' rel="noreferrer" href={`https://wa.me/+541158774985?text=${msg
@@ -229,11 +230,11 @@ export const Item = ({
 					onClick={()=>setValue(!!!value)}> Agregar al carrito
 						<input value={!!value} checked={!!value} type='checkbox' className='pointer' onChange={()=>setValue(!!!value)}/>
 					</div>
-					<select className='w20 radius-r backlime border border-l0' onChange={(e)=>setQuan(Number(e.target.value))}>
+					<select value={quan} className='w20 radius-r backlime border border-l0' onChange={(e)=>setQuan(Number(e.target.value))}>
 						{array.map(n=><option className='backblack' key={n}>{n}</option>)}
 					</select>
 				</div>
 			</div>
 		</div>
-	) : <div></div>;
+	) : '';
 };
