@@ -46,7 +46,7 @@ const results = [];
 
 fs.createReadStream('./Lista.csv')
   .pipe(csv({
-    headers: ['Nombre', 'Marca', 'Categoría', 'Tipo', 'Imagen', 'Descripción', 'Tamaño', 'Peso', 'Costo', 'Venta', 'Cantidad', 'Fecha', 'Vence', 'Lote', 'Estado', 'Valores'],
+    headers: ['Nombre', 'Marca', 'Tipo', 'Categoría', 'Imagen', 'Descripción', 'Tamaño', 'Peso', 'Costo', 'Venta', 'Cantidad', 'Fecha', 'Vence', 'Lote', 'Estado', 'Valores'],
     separator: ';'  // Si el separador es tabulación, si es otro ajusta esto.
   }))
   .on('data', (row) => {

@@ -213,9 +213,10 @@ export const Item = ({
 			<h3>{ marca }</h3>
 			{categoria && <p><strong>Categoría:</strong> {categoria}</p>}
 			{peso && <p><strong>Peso:</strong> {peso}</p>}
-			{costo && <p><strong>Precio:</strong> ${venta}</p>}
-			{vence && <p><strong>Vence:</strong> {vence}</p>}
-			{lote && <p><strong>Lote:</strong> {lote}</p>}
+			{/* {venta && <p><strong>Precio:</strong> ${venta}</p>} */}
+			<h2>${ venta }</h2>
+			{/* {lote && <p><strong>Lote:</strong> {lote}</p>} */}
+			{/* {vence && <p><strong>Vence:</strong> {vence}</p>} */}
 			{/* {tipo && <p><strong>Tipo:</strong> {tipo}</p>} */}
 			{/* {descripcion && <p><strong>Descripción:</strong> {descripcion}</p>} */}
 			{/* {tamaño && <p><strong>Tamaño:</strong> {tamaño}</p>} */}
